@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-
-
 @Service
 public class BookServiceImpl implements BookService {
 
@@ -31,6 +29,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookDto getBook(String isbn) {
         return bookDao.getBook(isbn);
+    }
+
+    public boolean deleteBook(String isbn){
+        return bookDao.deleteBook(isbn);
     }
 
 }

@@ -14,6 +14,7 @@ public interface BookService {
 
     BookDto getBook(String isbn);
 
+    boolean deleteBook(String isbn);
 }
 
 

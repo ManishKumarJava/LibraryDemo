@@ -4,12 +4,9 @@ import com.example.library.dao.BookDao;
 import com.example.library.dao.repo.BookRepository;
 import com.example.library.model.Book;
 import com.example.library.model.dto.BookDto;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-//import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,6 +51,7 @@ public class BookDaoImpl implements BookDao {
     public BookDto updateBook(BookDto book) {
         Book bookEntity = getBookEntity(book.getIsbn());
         bookEntity.setAuthor(book.getAuthor());
+        //only updating Author, we can update the whole book object.
         Book bookEntityResult = bookRepository.save(bookEntity);
         return getBookDto(bookEntityResult);
     }
@@ -64,6 +62,14 @@ public class BookDaoImpl implements BookDao {
         Book book = new Book(bookDto.getIsbn(), bookDto.getBookName(), bookDto.getAuthor());
         Book bookEntityResult = bookRepository.save(book);
         return getBookDto(bookEntityResult);
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteBook(String isbn) {
+        Book bookEntity = getBookEntity(isbn);
+        bookRepository.delete(bookEntity);
+        return true;
     }
 
 }

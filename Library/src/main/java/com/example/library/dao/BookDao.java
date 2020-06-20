@@ -14,4 +14,6 @@ public interface BookDao {
 
     BookDto getBook(String isbn);
 
+    boolean deleteBook(String isbn);
+
  }

@@ -30,7 +30,7 @@ public class LibraryController {
     public ResponseEntity<List<LibraryDto>> getLibraryBooks() {
         LOG.info("libBooks API called");
         List<LibraryDto> libraryDtos = libraryService.getLibraryBooks();
-        return new ResponseEntity<List<LibraryDto>>(libraryDtos, HttpStatus.OK);
+        return new ResponseEntity<>(libraryDtos, HttpStatus.OK);
     }
 
 }

@@ -30,6 +30,7 @@ public class BookServiceTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
+
         List<BookDto> books = new ArrayList<>();
         BookDto bookDto = getTestBookDto();
         books.add(bookDto);
@@ -37,6 +38,7 @@ public class BookServiceTest {
         when(bookDao.getBooks()).thenReturn(books);
         when(bookDao.updateBook(anyObject())).thenReturn(getTestBookDto());
         when(bookDao.addBook(anyObject())).thenReturn(getTestBookDto());
+        when(bookDao.deleteBook(anyObject())).thenReturn(true);
     }
 
     private BookDto getTestBookDto() {
@@ -67,5 +69,11 @@ public class BookServiceTest {
         Assert.assertEquals(TEST_ISBN, bookResult.getIsbn());
         Assert.assertEquals(TEST_BOOK_NAME, bookResult.getBookName());
         Assert.assertEquals(TEST_AUTHOR, bookResult.getAuthor());
+    }
+
+    @Test
+    public void deleteBookTest(){
+        boolean deleteResult = bookService.deleteBook(TEST_ISBN);
+        Assert.assertTrue(deleteResult);
     }
 }
