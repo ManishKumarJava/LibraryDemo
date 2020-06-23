@@ -42,6 +42,7 @@ public class BookDaoImpl implements BookDao {
         return bookList.get(0);
     }
 
+    //returning dto to client (instead of entity)
     private BookDto getBookDto(Book book){
         return new BookDto(book.getId(), book.getIsbn(),book.getBookName(), book.getAuthor());
     }

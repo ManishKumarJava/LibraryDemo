@@ -38,6 +38,7 @@ public class BookController {
         LOG.info("createBook API called with isbn:{}, bookName:{}, author:{} ", bookParam.getIsbn(), bookParam.getBookName(), bookParam.getAuthor());
         BookDto bookResult = bookService.addBook(bookParam);
         if(bookResult == null){
+            //Just showing that we can throw exception like this.
             throw new LibraryException("Exception while creating book record");
         }
         return new ResponseEntity<>(bookResult, HttpStatus.OK);

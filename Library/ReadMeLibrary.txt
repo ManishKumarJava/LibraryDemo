@@ -24,16 +24,20 @@ select * from book;
 select * from library;
 
 -------------------------------------------------------------------------------------------
+H2 Database
+http://localhost:8088/h2-console/
+jdbc:h2:mem:librarydb
+
 Get all library books (can renamed to getAllBooks)
 http://localhost:8088/library/allBooks
 
-update Author for ISBN
-@RequestMapping(value = "/updateBook/{isbn}/{author}")
-http://localhost:8088/library/updateBook/12345/Manish
+update Author for the given ISBN
+http://localhost:8088/library/updateBook
+{"isbn":"112345","bookName":"JavaUpdated","author":"James Gosling Updated"}
 
 Adding a new book
-@RequestMapping(value = "/addBook/{isbn}/{bookName}/{author}")
-http://localhost:8088/library/addBook/23456/MyBook/MyAuthor
+http://localhost:8088/library/createBook
+{"isbn":"100200","bookName":"Java100","author":"James Sir New"}
 
 Retrieving a specific book using isbn
 @RequestMapping(value = "/getBook/{isbn}")

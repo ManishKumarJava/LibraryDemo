@@ -25,7 +25,19 @@ public class Book {
     @Column
     private String author;
 
+    @Column
+    private int numbers;
+
     public Book() {
+    }
+
+
+    public int getNumbers() {
+        return numbers;
+    }
+
+    public void setNumbers(int numbers) {
+        this.numbers = numbers;
     }
 
     public Book(String isbn, String bookName, String author) {
